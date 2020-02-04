@@ -1,0 +1,95 @@
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<title>FCC Weather API pass-through</title>
+  <style media="screen">
+    body {
+      font-family: sans-serif;
+      color: #222;
+      background-color: #f7f7f7;
+      padding: 10px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    code {
+      background-color: #ff9;
+      padding: 3px;
+    }
+    p.usage {
+     display : block;
+     background-color: #d0e7d0;
+     padding: 15px;
+     border-radius: 15px;
+     max-width:900px;
+     line-height:1.5em;
+     margin:0 auto;
+    }
+  </style>
+</head>
+<body>
+	<h2>Free Code Camp Weather API Pass-through</h2>
+  <p class="usage">
+    USAGE:<br>
+    Use the endpoint: <code>https://fcc-weather-api.glitch.me/</code>. Use this endpoint to get the weather at a location.
+    To prevent abuses this server accepts <code>GET</code> requests only, and serves only the route <code>/api/current?lon=:longitude&lat=:latitude</code>. Images links are included in the JSON under <code>weather[0].icon</code>. This is enough to complete the challenge.
+    <br/>
+    Example:
+    <br/>
+    Request: <a href="https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139" target="_blank"><code>https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139</code></a>
+    <br/>
+    Response: <code>{
+   "coord":{
+      "lon":159,
+      "lat":35
+   },
+   "weather":[
+      {
+         "id":500,
+         "main":"Rain",
+         "description":"light rain",
+         "icon":"https://cdn.glitch.com/6e8889e5-7a72-48f0-a061-863548450de5%2F10n.png?1499366021399"
+      }
+   ],
+   "base":"stations",
+   "main":{
+      "temp":22.59,
+      "pressure":1027.45,
+      "humidity":100,
+      "temp_min":22.59,
+      "temp_max":22.59,
+      "sea_level":1027.47,
+      "grnd_level":1027.45
+   },
+   "wind":{
+      "speed":8.12,
+      "deg":246.503
+   },
+   "rain":{
+      "3h":0.45
+   },
+   "clouds":{
+      "all":92
+   },
+   "dt":1499521932,
+   "sys":{
+      "message":0.0034,
+      "sunrise":1499451436,
+      "sunset":1499503246
+   },
+   "id":0,
+   "name":"",
+   "cod":200
+}</code>
+  </p>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96586512-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body></html>

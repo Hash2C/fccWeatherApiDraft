@@ -1,0 +1,35 @@
+{
+  "coord": { "lon": 45, "lat": 35 },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "https://cdn.glitch.com/6e8889e5-7a72-48f0-a061-863548450de5%2F04n.png?1499366020983"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": -3,
+    "feels_like": -6.43,
+    "temp_min": -3,
+    "temp_max": -3,
+    "pressure": 1022,
+    "humidity": 100
+  },
+  "visibility": 10000,
+  "wind": { "speed": 1.5, "deg": 310 },
+  "clouds": { "all": 89 },
+  "dt": 1580779260,
+  "sys": {
+    "type": 1,
+    "id": 7604,
+    "country": "IQ",
+    "sunrise": 1580788629,
+    "sunset": 1580826630
+  },
+  "timezone": 10800,
+  "id": 94298,
+  "name": "Kifri",
+  "cod": 200
+}
