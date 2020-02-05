@@ -1,14 +1,6 @@
 var request = require("request");
 var path = require("path");
-/*
-  on imgLinks.json, these are small images, they should:
-  1) probably be cached;
-    or
-  2) not sent at all, leaving the implementation to the client;
-  in case 2, the API had to mention it.
-  it has a big disadvantage in case of API changes (e.g. if there is a new weather state)
-*/
-var imgLinks = require("./data/imgLinks.json");
+
 var express = require("express");
 var app = express();
 
@@ -87,16 +79,7 @@ function getBestCachedData(coords) {
   console.log("The desired data:", obj.map[`${coords.longitude},${coords.latitude}`]);
   return obj.map[`${coords.longitude},${coords.latitude}`];
 }
-/*Not sure about this function
-function replaceIconsWithLinks(data) {
-  for (var i = 0; i < data.weather.length; ++i) {
-    if (data.weather[0].hasOwnProperty("icon")) {
-      data.weather[0].icon = imgLinks[data.weather[0].icon];
-      // if data has an icon, why not just send it?
-    }
-  }
-}
-*/
+
 function addToCache(data) {
   console.log("Add data to cache");
   //For now does nothing. We aren't saving data.
