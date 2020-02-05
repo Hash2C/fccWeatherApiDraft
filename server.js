@@ -12,22 +12,18 @@ var weatherAPI =
 function isReqCoordinatesValid(coords) {
   /*
     what is the format of these variables?
-    let's assume they are positive decimal numbers
-  */
+    Update: +- xxx.xxxx
 
-  /*
     for future reference - https://www.nhc.noaa.gov/gccalc.shtml
     
     latitude - is a number; between 90 N and 90 S = -90 N
     longitude - is a number; between 180 W and 180 E = -180 W 
     
-    if any var is not a number: throw error 
-
-    if the variables are not provided in the range we can:
-    1) throw error ("Values out of range......")
-    2) use some mod(variable) value ?? I doubt it
+    if any coord is not a number: throw error 
+    if any coord out of range: throw error ("Values out of range......")
   */
-  if (!isNaN(coords.longitude) && !isNaN(coords.latitude)) {
+  if (isNaN(coords.longitude) || isNaN(coords.latitude))
+    return false; //alterantive: throw new Error('Coords must be numbers');
     /*
       for future reference
       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
@@ -35,10 +31,9 @@ function isReqCoordinatesValid(coords) {
       
       TODO: check this; for now let's assume this is enough validation
     */
-    return true;
-  }
-  return false;
-  //return !isNaN(longitude) && !isNaN(latitude);
+  if(coords.longitude < -180 || coords.longitude > 180 || coords.latitude < -90 || coords.latitude > 90)
+    return false;
+  return true;
 }
 
 function getNearestMapNodeFromCoordinates(coords) {
@@ -107,7 +102,8 @@ app.get("/api/current", function(req, res) {
 
   if (!isReqCoordinatesValid(coords)) {
     console.log("coordenates are wrong")
-    return res.json({ error: "Error message because coordinates are in the wrong format or are non-existent" });
+    return res.json(
+      { error: "Error: coordinates must exist, be numbers and in the acceptable range -> lon [-180, 180], lat [-90, 90]" });
   }
 
   var url = weatherAPI + "&lon=" + coords.longitude + "&lat=" + coords.latitude;
